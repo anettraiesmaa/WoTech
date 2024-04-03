@@ -1,6 +1,6 @@
 
 # Welcome to my repository
-## My skills
+## My skills 💻📚
   -Java
   -Phyton
   -GitHub
