@@ -10,7 +10,7 @@
 2. Phyton AI tool
 3. My own social network
 
-## My favoritepart of code
+## My favorite part of code
 ```java
     int temp = 45;
     if (temp >= 0 && temp <=5) {
