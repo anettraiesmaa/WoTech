@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+    public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("What is your first name? ");
+        String firstName = scan.next();
+        System.out.println("What is your last name:");
+        String lastName = scan.next(); 
+
+        System.out.println("What is your age? ");
+        int age = scan.nextInt();
+        scan.nextLine();
+
+        System.out.println("What is your haircolor? ");
+        String haircolor = scan.next();
+        System.out.println("What is your eyecolor? ");
+        String eyecolor = scan.next(); 
+        System.out.println("What is your banking account? ");
+        String bankingaccount = scan.next();
+
+        System.out.println("Wrhat is your balance? ");
+        double balance = scan.nextDouble();
+        scan.nextLine();
+        
+
+        System.out.println("Your name is " + firstName + " " + lastName + ". You are " + age + " years old." + " Your haircolor is " + haircolor + " and your eyecolor is " + eyecolor + ". Your banking account is " + bankingaccount + " and your balance is " + balance + ".");
+        
+        scan.close();
+
+    }
+}
