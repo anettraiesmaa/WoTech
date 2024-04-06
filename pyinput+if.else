@@ -1,0 +1,14 @@
+#username
+#password
+
+username = input('Enter you username: ')
+password = input('Enter your password: ')
+
+STORED_USERNAME = 'user123'
+STORED_PASSWORD = 'pass123'
+
+
+if username ==  STORED_USERNAME and password == STORED_PASSWORD:
+  print('Access granted')
+else:
+  print('Access denied')
