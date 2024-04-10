@@ -1,0 +1,23 @@
+public class Main {
+  public static void main(String[] args) {
+
+    System.out.println("Hello world!");
+
+    int i = 1; // 1 <10 true we go into while loop
+  
+    
+    
+    while (i <= 10) {
+      String result = "";
+      if(i % 2 == 0){
+        result = "even";
+      }else{
+        result = "odd";z
+      }
+      System.out.println(i + " " + result);
+      i = i + 1;
+     
+    }
+    
+  }
+}
