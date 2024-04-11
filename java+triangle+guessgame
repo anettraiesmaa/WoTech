@@ -1,0 +1,43 @@
+import java.util.Scanner;
+public class Main {
+  public static void main(String[] args) {
+    //1. Create a triangle that is made of _ symbol
+    //Ask the user for a number, and then print out x amount of lines with specific symbol.
+    Scanner scan = new Scanner(System.in);
+    System.out.println("Insert how many lines long the triangle should be: ");
+    int triangleSize = scan.nextInt();  
+
+    for (int i = 1; i <= triangleSize; i++) {
+        // Loop to print the appropriate number of '_' symbols for each line
+        for (int j = 1; j <= i; j++) {
+            System.out.print("_");
+        }
+        // Move to the next line after printing each line of the triangle
+        System.out.println();
+    }
+
+
+    //2.Guess a number inbetween 0 and 100
+    //You can provide the user with information, whether or not the number is bigger or less than the guess
+      int number= 20;
+      boolean correctGuess = false; 
+      System.out.println("Guess a number between 0 and 100");
+      int guess = scan.nextInt();
+    
+    while (!correctGuess){
+      while (!correctGuess) {
+          if (guess == number) {
+              System.out.println("Right guess");
+              correctGuess = true;
+          } else if (guess < number) {
+              System.out.println("Too low. Guess another time");
+              guess = scan.nextInt();
+          } else {
+              System.out.println("Too high. Guess another time");
+              guess = scan.nextInt();
+          }
+      }
+    }
+  }
+}
+     
