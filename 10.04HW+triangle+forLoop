@@ -28,16 +28,38 @@ public class Main {
     //inside the loop print _symbol i times
     int number = scan.nextInt();
     String result = "";
-    for(int i = 1; i <= number; i++) // We do action before first cycle; condition for cycle; action after every cycle
-      result = result + "_";
-      System.out.println(result);
+    for(int i = 1; i <= number; i++){ // We do action before first cycle; condition for cycle; 
+     //action after every cycle
+      result = result + "_";//result = "" + "_"; ---result = "__"; 
+      System.out.println(result);//print out result
     }    
     
   }
 }
 
 
-    //2.Guess a number inbetween 0 and 100
+       //2.Guess a number inbetween 0 and 100
     //You can provide the user with information, whether or not the number is bigger or less than the guess
+      int number= 20;
+      boolean correctGuess = false; 
+      System.out.println("Guess a number between 0 and 100");
+      int guess = scan.nextInt();
+    
+    while (!correctGuess){
+      while (!correctGuess) {
+          if (guess == number) {
+              System.out.println("Right guess");
+              correctGuess = true;
+          } else if (guess < number) {
+              System.out.println("Too low. Guess another time");
+              guess = scan.nextInt();
+          } else {
+              System.out.println("Too high. Guess another time");
+              guess = scan.nextInt();
+          }
+      }
+    }
   }
 }
+
+
