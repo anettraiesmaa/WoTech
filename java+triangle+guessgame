@@ -40,4 +40,35 @@ public class Main {
     }
   }
 }
+
+oskars way:
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+ //we have a number
+ //we ask for yhe user to guess the number
+ //we tell the user if the guess is too high or too low
+ //if the guessed number is right we say correct
+ //2-5 line a loop, we stop the loop when user is right
+    Scanner scanner = new Scanner(System.in);
+    int number = 58;
+    boolean userGuessedCorrectly = false;
+    while(!userGuessedCorrectly) {
+      System.out.println("Please guess a number!");
+      int guess = scanner.nextInt(); //A number that user provides
+
+      if(number == guess) {
+        System.out.println("Good job, you guessed correctly");
+        userGuessedCorrectly = true;
+      }else if(number < guess){
+        System.out.println("Your guess is too high");
+      }else{
+        System.out.println("Your guess in too low");
+      }
+    }
+    System.out.println("Guessing game is over!");
+    scanner.close();
+    }
+    }
      
