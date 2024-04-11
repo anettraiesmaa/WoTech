@@ -15,6 +15,26 @@ public class Main {
         // Move to the next line after printing each line of the triangle
         System.out.println();
     }
+Oskars way:
+import java.util.Scanner;
+public class Main {
+  public static void main(String[] args) {
+    //1. Create a triangle that is made of _ symbol
+    //Ask the user for a number, and then print out x amount of lines with specific symbol.
+    Scanner scan = new Scanner(System.in);
+    
+    //get a use input
+    //create loop that runs x amount of times
+    //inside the loop print _symbol i times
+    int number = scan.nextInt();
+    String result = "";
+    for(int i = 1; i <= number; i++) // We do action before first cycle; condition for cycle; action after every cycle
+      result = result + "_";
+      System.out.println(result);
+    }    
+    
+  }
+}
 
 
     //2.Guess a number inbetween 0 and 100
