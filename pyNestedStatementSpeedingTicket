@@ -1,0 +1,19 @@
+name = input('Please write yout name: ')
+speed_limit = int(input('Please enter the speed limit: '))
+actual_speed = int(input('Please insert your speed: '))
+
+try:
+  speed_limit = int(speed_limit)
+  actual_speed = int(actual_speed)
+except:
+  print('Wrong speed values entered. Please enter km/h')
+else: 
+  difference = actual_speed - speed_limit
+  fine = difference * 3
+  if speed_limit >= actual_speed:
+    print('Speed limit is not exceeded. No fine applied')
+  else:
+    if fine > 190:
+      print(f'{name} your fine for speeding is 190 euros.')
+    else:
+      print(f'{name} your fine for speeding is {fine}')
