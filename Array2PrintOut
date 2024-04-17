@@ -1,0 +1,23 @@
+Printing out all values in array:
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+
+    //int[] arr = { 5, 7, 9 };
+    int[] arr = new int[5];// 5 shelves long 'closet'-room for 5 numbers, creats new array
+    arr[0] = 5;
+    arr[1] = 7;
+    arr[2] = 9;
+    arr[3] = 12;
+    arr[4] = 15;
+
+    //System.out.println(arr[0]);
+    //with for loop we can print out all values
+
+    for(int i=0; i < arr.length; i++){
+      System.out.println(arr[i]);
+    }
+
+  }
+}
