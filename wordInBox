@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        
+        System.out.println("Enter the word you want to be in box: ");
+        String wordInBox = scanner.nextLine();
+        int length = wordInBox.length();
+
+       
+        for (int i = 1; i < length + 2; i++) {
+            System.out.print("=");
+        }
+        System.out.println();
+
+        
+        System.out.print("|");
+        for (int j = 0; j < length; j++) {
+          System.out.print(wordInBox.charAt(j));
+      }
+      System.out.println("|");
+
+        
+        for (int i = 1; i < length + 2; i++) {
+            System.out.print("=");
+        }
+      scanner.close();
+    }
+}
