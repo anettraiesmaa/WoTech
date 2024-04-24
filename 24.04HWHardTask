@@ -1,0 +1,68 @@
+//Hard:
+//1. Create a program, where user can provide a title and a small text below the title.
+//Title should be wrapped with ====== at top and bottom, based on the title length.
+//Example: 
+//System asks for title and user provides "WoTech and Java is easy"
+//System asks for description and user provides "I have been learning Java for 6 weeks now."
+
+//Result: 
+//=======================
+//WoTech and Java is easy
+//=======================
+
+//I have been learning Java for 6 weeks now.
+
+
+
+//Hard:
+//1. Create a program, where user can provide a title and a small text below the title.
+//Title should be wrapped with ====== at top and bottom, based on the title length.
+//Example: 
+//System asks for title and user provides "WoTech and Java is easy"
+//System asks for description and user provides "I have been learning Java for 6 weeks now."
+
+//Result: 
+//=======================
+//WoTech and Java is easy
+//=======================
+
+//I have been learning Java for 6 weeks now.
+
+Anett Raiesmaa — Today at 8:22 PM
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("Enter a title: ");
+        String title = scan.nextLine();
+
+        System.out.println("Enter a short description: ");
+        String description = scan.nextLine();
+
+        printOutBorder(title);
+        System.out.println(title);
+        printOutBorder(title);
+        System.out.println(description);
+
+        scan.close();
+    }
+
+    public static void printOutBorder(String title) {
+        int titleLength = title.length();
+        for (int i = 0; i < titleLength; i++) {
+            System.out.print("=");
+        }
+        System.out.println();
+    }
+}
+
+
+
+
+
+
+
+
+ 
