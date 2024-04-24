@@ -1,0 +1,28 @@
+public class Main {
+  
+  public static void main(String[] args) {
+    
+    printOutBorder();
+    System.out.println("Hello World!");
+    int number = getARandomNumber();
+    System.out.println(number);
+    printOutBorder(); 
+
+  }
+  
+  public static void printOutBorder(){
+  //function starts here
+    System.out.println("======================");
+  //function ends here
+    
+  }
+  public static int getARandomNumber(){
+    return 5;
+  }
+}
+//method=function
+//public means it can be accessed by other classes
+//priate mean it can only be accessed by the class it is in
+//proteced means it can only be accessed by the class it is in and its subclasses
+//static means it can be called without creating an object of the class
+//void means returns nothing, this is just an action, void can be boolean, string, int etc.
