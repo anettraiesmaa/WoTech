@@ -1,0 +1,32 @@
+//Easy:
+
+//Sum of 2 numbers
+//User provides 2 numbers
+//Result is a sum of those numbers
+
+//Example: 
+//User inputs 5
+//User inputs 6
+//Result: 11
+import java.util.Scanner;
+public class Main {
+  public static void main(String[] args){
+
+    System.out.println("Please enter two numbers you want to sum!");
+    Scanner scanner = new Scanner(System.in);
+    int number1 = scanner.nextInt();
+    int number2 = scanner.nextInt();
+    int result = sum(number1, number2);
+    System.out.println("The sum of " + number1 + " and " + number2 + " is " + result);
+
+
+  }
+  public static int sum(int number1,int number2){
+    return number1 + number2;
+  }
+}
+
+
+
+
+ 
