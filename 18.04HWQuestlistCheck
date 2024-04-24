@@ -1,0 +1,21 @@
+public class Main {
+  public static void main(String[] args) {
+    String questList[] = {"Oskars", "Anna", "Maris"};
+    boolean annaIsInvited = true;
+    boolean marisIsInvited = false;
+
+    if (annaIsInvited){
+      System.out.println("Anna is invited");
+    }else{
+      System.out.println("Anna is not invited");
+    }
+
+    if (marisIsInvited){
+      System.out.println("Maris is invited");
+    }else{
+      System.out.println("Maris is not invited");
+    }
+
+    
+  }
+}
