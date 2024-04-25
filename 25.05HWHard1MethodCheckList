@@ -9,46 +9,29 @@
 
 
 import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter your name to check if you are invited to the party: ");
-        String checkAnna = scanner.nextLine();
-        String checkMaris = scanner.nextLine();
+        String quest = scanner.nextLine();
+        
         String[] partyList = {"Oskars", "Anna", "Andris"};
-        isAnnaInvited(partyList);
-        isMarisInvited(partyList);
+        isPersonInvited(partyList, quest);
         scanner.close();
     }
 
-    public static void isAnnaInvited(String[] partyList) {
+    public static void isPersonInvited(String[] partyList, String quest) {
         boolean isInPartyList = false;
         for (int i = 0; i < partyList.length; i++) {
-            if (partyList[i].equals("Anna")) {
+            if (partyList[i].equals(quest)) {
                 isInPartyList = true;
                 break;
             }
         }
         if (isInPartyList) {
-            System.out.println("Anna is in the party list");
+            System.out.println(quest + " you are in the party list");
         } else {
-            System.out.println("Anna is not in the party list");
-        }
-    }
-
-    public static void isMarisInvited(String[] partyList) {
-        boolean isInPartyList = false;
-        for (int i = 0; i < partyList.length; i++) {
-            if (partyList[i].equals("Maris")) {
-                isInPartyList = true;
-                break;
-            }
-        }
-        if (isInPartyList) {
-            System.out.println("Maris is in the party list");
-        } else {
-            System.out.println("Maris is not in the party list");
-        }
+            System.out.println(quest + " you are not invited to the party");
+        }   
     }
 }
