@@ -1,0 +1,32 @@
+//1. Create a function that returns smallest number of 2 numbers.
+
+//For example:
+//User provides 5
+//User provides 7
+
+//Function returns 5
+//Main function prints out:
+//5 is the smallest number
+
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+
+    System.out.println("Enter a number: ");
+
+    Scanner scanner = new Scanner(System.in);    
+    int number1 = scanner.nextInt();
+    System.out.println("Enter a second number: ");
+    int number2 = scanner.nextInt();
+    scanner.close();
+    System.out.println("Smaller number is: " + smallestNumber(number1, number2));
+  }
+  public static int smallestNumber(int number1, int number2){
+    if(number1 < number2){
+      return number1;
+    } else {
+      return number2;
+    } 
+  }
+}
