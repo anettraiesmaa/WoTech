@@ -1,0 +1,18 @@
+public class Main {
+  public static void main(String[] args) {
+    int money = 50;
+
+    String result = buyJeans(money);
+
+    System.out.println(result);
+  }
+
+  public static String buyJeans(int money){
+    if(money > 30) // 29.99
+    {
+      return "Person can afford Jeans";
+    }else{
+      return "Person cannot afford Jeans";
+    }
+  }
+}
