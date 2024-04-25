@@ -2,25 +2,32 @@ public class Main {
   public static void main(String[] args) {
     int number = 51;
 
-    checkNumber(number);
+    String result = checkNumber(number);
+    System.out.println(result);
 
     int number2 = 49;
-    
-    checkNumber(number2);
+
+    String result2 = checkNumber(number2);
+    System.out.println(result2);
     /* We get the number
     We check whether or not it is bigger than 50
     We check whether or not it is smaller than 50
     We assume it is equal to 50 if all of the upper conditions are false
     */
   }
-
-  public static void checkNumber(int number){
+  //Void is just for action
+  //int it is returning a number
+  //string is returning a text
+  //double is returning a double 
+  //...
+  public static String checkNumber(int number){
     if(number > 50){
-      System.out.println("Number is greater than 50");
+      return "Number is greater than 50";
     }else if(number < 50){
-      System.out.println("Number is less than 50");
+      return "Number is less than 50";
     }else{
-      System.out.println("Number is equal to 50");  
-    }
+      return "Number is equal to 50";  
+    }    
+    
   }
 }
