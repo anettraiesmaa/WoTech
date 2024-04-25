@@ -1,0 +1,28 @@
+//2. Create a function that returns a multiplication of 3 different numbers
+//For example: 
+//User provides 5
+//User provides 7
+//User provides 3
+
+//Function returns 105
+//Main function prints out 105
+
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter first number");
+        int firstNumber = scanner.nextInt();
+        System.out.println("Enter second number");
+        int secondNumber = scanner.nextInt();
+        System.out.println("Enter third number");
+        int thirdNumber = scanner.nextInt();
+        int result = multiply(firstNumber, secondNumber, thirdNumber);
+        System.out.println("Result is " + result);
+        
+    }
+    public static int multiply(int firstNumber, int secondNumber, int thirdNumber){
+        return firstNumber * secondNumber * thirdNumber;
+    }
+}
