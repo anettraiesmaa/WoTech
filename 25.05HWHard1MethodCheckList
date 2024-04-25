@@ -1,0 +1,54 @@
+//Hard:
+//1. Fill the party list with people you would like to invite to the party.
+//Check whether or not "Anna" is in the array.
+//Check whether or not "Maris" is in the array.
+//["Oskars", "Anna", "Andris"]
+//Result: 
+//"Anna is in the party list"
+//"Maris is not in the party list"
+
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter your name to check if you are invited to the party: ");
+        String checkAnna = scanner.nextLine();
+        String checkMaris = scanner.nextLine();
+        String[] partyList = {"Oskars", "Anna", "Andris"};
+        isAnnaInvited(partyList);
+        isMarisInvited(partyList);
+        scanner.close();
+    }
+
+    public static void isAnnaInvited(String[] partyList) {
+        boolean isInPartyList = false;
+        for (int i = 0; i < partyList.length; i++) {
+            if (partyList[i].equals("Anna")) {
+                isInPartyList = true;
+                break;
+            }
+        }
+        if (isInPartyList) {
+            System.out.println("Anna is in the party list");
+        } else {
+            System.out.println("Anna is not in the party list");
+        }
+    }
+
+    public static void isMarisInvited(String[] partyList) {
+        boolean isInPartyList = false;
+        for (int i = 0; i < partyList.length; i++) {
+            if (partyList[i].equals("Maris")) {
+                isInPartyList = true;
+                break;
+            }
+        }
+        if (isInPartyList) {
+            System.out.println("Maris is in the party list");
+        } else {
+            System.out.println("Maris is not in the party list");
+        }
+    }
+}
