@@ -1,0 +1,14 @@
+public class Main {
+  public static void main(String[] args) {
+    int number1 = 7;
+    int number2 = 12;
+    int number18 = 18;
+
+    int result = sum(number1, number2); //7+12=19
+
+    int finalResult = sum(result, number3); // 19+18=37
+  }
+  public static void int sum(int a, int b){
+    return a + b
+  }
+}
