@@ -1,0 +1,28 @@
+//3. Create a function that returns a combination of first name and last name
+//User provides "Oskars"
+//User provides "Klaumanis"
+
+//Function receives both of the names and returns "Oskars Klaumanis"
+//Main function prints out the result
+
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+    System.out.println("Enter your name: ");
+    String name = scanner.nextLine();
+
+    System.out.println("Enter your surename: ");
+    String surename = scanner.nextLine();
+
+    fullName(name, surename);
+
+    scanner.close();
+  }
+
+  public static void fullName(String name, String surename) {
+    String fullName = name + " " + surename;
+    System.out.println("Your full name is: " + fullName);
+  }
+}
