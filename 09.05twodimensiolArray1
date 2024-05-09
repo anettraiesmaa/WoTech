@@ -1,0 +1,22 @@
+    public class Main {
+        public static void main(String[] args) {
+            int[][] array = {
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}
+            };   
+
+            for(int i = 0; i < array.length; i++){ 
+                //array[0] = {1, 2, 3}
+                //array[0].length = 3
+                int[] row = array[i]; // {1, 2, 3} OR {4, 5, 6} OR, {7, 8, 9}
+                for(int j = 0; j < row.length; j++){//PROCESSING ROWS HERE
+                    System.out.print(row[j]); //printing out rows
+                }
+                System.out.println();//printing rows in diffrent lines
+            }  
+
+
+            
+        }
+    }
