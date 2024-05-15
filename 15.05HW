@@ -1,0 +1,93 @@
+public class Main {
+    public static void main(String[] args) { 
+        int[] array = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        array = changeArray(array);
+        printOutArray(array);
+
+        String alphabet = "abc";
+        alphabet = changeString(alphabet);
+        System.out.println(alphabet);
+
+        boolean isSummer = true;
+        isSummer = changeBoolean(isSummer);
+        System.out.println(isSummer);
+
+        char dollarSign = '$';
+        dollarSign = changeChar(dollarSign);
+        System.out.println(dollarSign);
+
+        float floatingNumber = 2.5f;
+        floatingNumber = changeFloatingNumber(floatingNumber);
+        System.out.println(floatingNumber);
+
+        double doubleNumber = 2.5764638;
+        doubleNumber = changeDoubleNumber(doubleNumber);
+        System.out.println(doubleNumber);
+
+        byte biggestByteNumber = 127;
+        biggestByteNumber = changeToSmallestByte(biggestByteNumber);
+        System.out.println(biggestByteNumber);
+
+        short biggestShortNumber = 32767;
+        biggestShortNumber = changeToSmallestShort(biggestShortNumber);
+        System.out.println(biggestShortNumber);
+
+        int biggestIntNumber = 2147483647;
+        biggestIntNumber = changeToSmallestInt(biggestIntNumber);
+        System.out.println(biggestIntNumber);
+
+        long biggestLongNumber = 9223372036854775807L;
+        biggestLongNumber = changeToSmallestLong(biggestLongNumber);
+        System.out.println(biggestLongNumber);
+        }   
+
+    public static int[] changeArray(int[] array){
+        for (int i = 0; i < array.length; i++){
+            array[i] = array[i] * 2;
+        }
+        return array;
+    }
+
+    public static void printOutArray(int[] array){
+        for (int i = 0; i < array.length; i++){
+            System.out.println(array[i]);
+        }
+    }
+    public static String changeString(String alphabet){
+        alphabet = "def";
+        return alphabet;    
+    }
+    public static boolean changeBoolean(boolean isSummer){
+        isSummer = false;
+        return isSummer;
+    }
+    public static char changeChar(char dollarSign){
+        dollarSign = '!';
+        return dollarSign;
+    }
+    public static float changeFloatingNumber(float floatingNumber){
+        floatingNumber = floatingNumber / 2; 
+        return floatingNumber;
+    }
+    public static double changeDoubleNumber(double doubleNumber){
+        doubleNumber = doubleNumber / 2;
+        return doubleNumber;
+    }
+    public static byte changeToSmallestByte(byte biggestByteNumber){
+        biggestByteNumber = -128;
+        return biggestByteNumber;
+    }
+    public static short changeToSmallestShort(short biggestShortNumber){
+        biggestShortNumber = -32768;
+        return biggestShortNumber;
+    }
+    public static int changeToSmallestInt(int biggestIntNumber){
+        biggestIntNumber = -2147483648;
+        return biggestIntNumber;
+    }
+    public static long changeToSmallestLong(long biggestLongNumber){
+        biggestLongNumber = -9223372036854775808L;
+        return biggestLongNumber;
+    }
+}
+
