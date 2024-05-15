@@ -1,0 +1,17 @@
+public class Main {
+    public static void main(String[] args) { 
+        int[] arrayVoid = { 1, 2, 3, 4, 5 };
+        
+        int[] array2 = arrayVoid;
+        array2[0] = 123;
+        System.out.print(arrayVoid == array2);
+        System.out.println(arrayVoid[0]);
+        System.out.println(array2[0]);
+        
+    
+    }
+
+
+}
+
+// Reference type
