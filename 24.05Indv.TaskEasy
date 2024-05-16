@@ -1,0 +1,39 @@
+//Game grid should be 3x3. It should be possible for the user to put values in the grid by typing row number and column number.
+
+
+
+//Easy: Ask user for row and column and write in the two dimensional array a value "1" in the correct place.
+
+//Check whether or not the row chosen by user contains all 1.
+
+//If all elements in row contain 1, then let player know they won.
+
+
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        int[][] gameGrid = new int[3][3];
+        int count = 1;
+        userInput();
+        printOutGrid(gameGrid);
+        
+        
+    }
+    public static void printOutGrid(int[][] gameGrid){
+        for(int i = 0; i < gameGrid.length; i++){
+            for(int j = 0; j < gameGrid[i].length; j++){
+                System.out.print(gameGrid[i][j] + "|");
+            }
+            System.out.println();
+        }
+    }
+    public static void userInput(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter row number: ");
+        int rowNumber = scanner.nextInt();
+        System.out.println("Enter column number: ");
+        int columnNumber = scanner.nextInt();
+        
+    }
+}
