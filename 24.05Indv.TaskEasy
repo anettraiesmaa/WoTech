@@ -14,26 +14,65 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         int[][] gameGrid = new int[3][3];
-        int count = 1;
-        userInput();
-        printOutGrid(gameGrid);
-        
-        
-    }
-    public static void printOutGrid(int[][] gameGrid){
-        for(int i = 0; i < gameGrid.length; i++){
-            for(int j = 0; j < gameGrid[i].length; j++){
-                System.out.print(gameGrid[i][j] + "|");
+
+        while (true) {
+            int[] locationOfOne = userInput(gameGrid);
+            int rowNumber = locationOfOne[0];
+            int columnNumber = locationOfOne[1];
+
+            gameGrid[rowNumber][columnNumber] = 1;
+            printOutGrid(gameGrid);
+
+            if (checkRowIsFull(gameGrid, rowNumber)) {
+                System.out.println("You won!");
+                break;
             }
-            System.out.println();
         }
     }
-    public static void userInput(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter row number: ");
-        int rowNumber = scanner.nextInt();
-        System.out.println("Enter column number: ");
-        int columnNumber = scanner.nextInt();
         
+        
+    public static void printOutGrid(int[][] gameGrid) {
+        for(int i = 0; i < 3; i++) {
+            System.out.println();
+            for (int j = 0; j < 3; j++) {
+                if (j==0)
+                    System.out.print("| ");
+                System.out.print(gameGrid[i][j] + " | ");
+            }
+        }
     }
+           
+    
+    public static int[] userInput(int[][] gameGrid) {
+        Scanner scanner = new Scanner(System.in);
+        int rowNumber, columnNumber;
+
+        while (true) {
+            System.out.println("Enter row number (0-2): ");
+            rowNumber = scanner.nextInt();
+            System.out.println("Enter column number (0-2): ");
+            columnNumber = scanner.nextInt();
+
+            if (rowNumber < 0 || rowNumber > 2 || columnNumber < 0 || columnNumber > 2) {
+                System.out.println("Invalid input. Please enter numbers between 0 and 2.");
+            } else if (gameGrid[rowNumber][columnNumber] != 0) {
+                System.out.println("Position already taken. Please try again.");
+            } else {
+                break;  // Valid input
+            }
+        }
+
+        return new int[]{rowNumber, columnNumber};
+    }
+    
+    public static boolean checkRowIsFull(int[][] gameGrid, int rowNumber) {
+        for (int j = 0; j < 3; j++) {
+            if (gameGrid[rowNumber][j] != 1) {
+                return false;
+            }
+        }
+        return true;
+            
+    }          
+
 }
