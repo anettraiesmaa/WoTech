@@ -1,0 +1,37 @@
+import java.util.ArrayList;
+import java.util.stream.Collectors;
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    ArrayList <String> shopsItems = new ArrayList <String>(); 
+    
+      // Initialisting the ArrayList, creates a new object and gives a refernce to the object.
+
+    System.out.println("What would you like to add to the store? Type 'exit' to exit.");
+
+    var scanner = new Scanner(System.in);
+    while (true){
+      var item = scanner.nextLine();
+      if (item.equals("exit")){
+        break;
+      }
+      addItem(shopsItems, item);
+    }
+
+    System.out.println("Your list is: ");
+    printArrayList(shopsItems);
+  }
+
+  public static void printArrayList(ArrayList<String> items){
+    for (String item : items){
+      System.out.println(item);
+    }
+  }
+
+  public static void addItem(ArrayList<String> items, String item){
+    items.add(item);
+    System.out.println(item + " has been added to the store. ");
+    
+  }
+}
