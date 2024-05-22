@@ -1,0 +1,33 @@
+import java.util.ArrayList;
+import java.util.stream.Collectors;
+//Easy: Create an arrayList for integers
+//Add 5 numbers.
+
+// filter the arrayList and print out only numbers that divide by 2 
+//number % 2 == 0)
+
+public class Main {    
+    public static void main(String[] args) {
+        var numbers = new ArrayList<Integer>();
+        numbers.add(3);
+        numbers.add(5);
+        numbers.add(6);
+        numbers.add(8);
+        numbers.add(9);
+
+        var filteredNumbers = new ArrayList<Integer>();
+        for(int numb : numbers){
+            if(numb % 2 == 0){
+                filteredNumbers.add(numb);
+            }
+        }
+        printArrayList(filteredNumbers);    
+    }
+    public static void printArrayList(ArrayList<Integer> numbers) {
+        System.out.println("These numbers divide by 2: ");
+        for (int number : numbers) {
+            System.out.println(number);
+        }
+    }
+}
+
