@@ -1,0 +1,28 @@
+
+import java.util.ArrayList;
+import java.util.stream.Collectors;
+import java.util.Scanner;
+
+//initialize Array list
+//cretae an element in the arrayList
+//remove an element
+//get the element
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<String> shopsItems = new ArrayList<String>();
+        //inizialies an arraylist, creates a new object and gives a refrence
+        shopsItems.add("Table"); //filling string arrraylist
+        shopsItems.add("Cupboard");
+
+        printArrayList(shopsItems);
+        System.out.println(shopItems)
+    }
+
+    public static void printArrayList(ArrayList<String> items){
+        //for (VariableType nameOfArgument : nameOfArrayList) in this case
+        for (String item : items){
+            System.out.println(item);
+        }
+    }
+}
