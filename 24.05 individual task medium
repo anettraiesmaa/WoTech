@@ -1,0 +1,131 @@
+//Ask for row and column and write in the two dimensional array a value "1" or "2" in the correct place, depending on which players turn it is. Switch the turn after every move.
+
+//Check whether or not the row chosen by user contains all 1, or all 2.
+
+//Check whether or not the column chosen by user contains all 1, or all 2.
+
+//(1 represents X, 2 represents O, 0 represents empty)
+
+
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        char[][] gameGrid = new char[3][3];
+        int currentPlayer = 1;
+        
+        Player playerX = new Player("X", gameGrid);
+        Player playerO = new Player("O", gameGrid);
+        Player currentPlayer = PlayerX;
+        int turnCount = 0;
+
+        boolean keepPlaying = true;
+        while(keepPlaying){
+            turnCount++;
+            if (turnCount % 2 == 0){
+                currentPlayer = playerO;
+            } else {
+                currentPlayer = playerX;
+            }
+            System.out.print(currentPlayer + ", make a move (1-9): ");
+    
+        }
+        return null;
+
+        while (true) {
+            int[] locationOfOne = userInput(gameGrid, currentPlayer);
+            int rowNumber = locationOfOne[0];
+            int columnNumber = locationOfOne[1];
+
+            gameGrid[rowNumber][columnNumber] = currentPlayer;
+            printOutGrid(gameGrid);
+
+            if (checkRowIsFull(gameGrid, rowNumber, currentPlayer)) {
+                System.out.println(currentPlayer + "You won!");
+                break;
+            }
+            if (checkColumnIsFull(gameGrid, columnNumber)){
+                System.out.println(currentPlayer + "You won!");
+                break;
+            }
+            if (currentPlayer == 1){
+                currentPlayer = 2;
+            } else {
+                currentPlayer = 1;
+            }
+        }
+    }
+
+
+    public static void printOutGrid(char[][] gameGrid) {
+        for(int i = 0; i < 3; i++) {
+            System.out.println();
+            for (int j = 0; j < 3; j++) {
+                if (j==0)
+                    System.out.print("| ");
+                System.out.print(gameGrid[i][j] + " | ");
+            }
+        }
+    }
+
+
+    public static int[] userInput(char[][] gameGrid) {
+        Scanner scanner = new Scanner(System.in);
+        int rowNumber, columnNumber;
+
+        while (true) {
+            System.out.println("Enter row number (0-2): ");
+            rowNumber = scanner.nextInt();
+            System.out.println("Enter column number (0-2): ");
+            columnNumber = scanner.nextInt();
+
+            if (rowNumber < 0 || rowNumber > 2 || columnNumber < 0 || columnNumber > 2) {
+                System.out.println("Invalid input. Please enter numbers between 0 and 2.");
+            } else if (gameGrid[rowNumber][columnNumber] != 0) {
+                System.out.println("Position already taken. Please try again.");
+            } else {
+                break;  
+            }
+        }
+
+        return new int[]{rowNumber, columnNumber};
+    }
+
+    public static boolean checkRowIsFull(char[][] gameGrid, int rowNumber, int currentPlayer) {
+        for (int j = 0; j < 3; j++) {
+            if (gameGrid[rowNumber][j] != 1) {
+                return false;
+            }
+        }
+        return true;
+
+    } 
+    
+    public static boolean checkColumnIsFull(char[][] gameGrid, int columnNumber, int currentPlayer){
+        for (int i = 0; i < 3; i++){
+            if (gameGrid[i][columnNumber] != 1){
+                return false;
+            }
+        }
+        return true;
+   
+    
+    }
+    class Player {
+        private char symbol;
+        private String name;
+
+        public Player(char symbol, String name) {
+            this.symbol = symbol;
+            this.name = name;
+        }
+
+        public char getSymbol() {
+            return symbol;
+        }
+
+        public String getName() {
+            return name;
+        }
+    }
+}
