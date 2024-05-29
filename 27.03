@@ -1,0 +1,24 @@
+public class Main {
+  public static void main(String[] args) {
+
+  //It returns true if both of the boolean expressions are true, and false otherwise
+boolean a = true;
+boolean b = false;
+boolean result = a && b;
+System.out.println(result);
+
+    //It returns true if at least one of the boolean expressions is true, and false otherwise.
+boolean c = true;
+boolean d = false;
+boolean resultTwo = c || d;
+System.out.println(resultTwo);
+
+    // If the operand is true, the ! operator evaluates to false, and if the operand is false, the ! operator evaluates to true.
+boolean e = true;
+boolean f = true;
+boolean resultThree = (!(e == f));
+System.out.println(resultThree);
+
+
+  }
+}
