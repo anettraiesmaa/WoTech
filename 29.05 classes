@@ -1,0 +1,25 @@
+public class Main {
+    public static void main(String[] args) {
+
+        Person person = new Person();
+        person.name = "Oskars";
+        person.surname = " Klaumanis";
+
+        Person person2 = new Person();
+        person2.name = "Elchin";
+        person2.surname = " Datorium";
+
+        System.out.print(person.name);
+        System.out.println(person.surname);
+
+        System.out.print(person2.name);
+        System.out.println(person2.surname);
+        
+    }
+}
+
+public class Person {
+  
+  public String name;
+  public String surname;
+}
