@@ -1,0 +1,27 @@
+
+public class Main {
+  public static void main(String[] args) {
+
+
+  var name = "Alexa";
+  var gender = "female";
+  var vanus = 44.8;
+  var finishedUniversity = true;
+  var occupation = "Software Engineer";
+  var Married = true;
+  var howmanyKids = 2;
+  var BankaccountNumber = 4364675875787768L;
+  var accountBalance = 500; 
+
+  System.out.println(name + " is " + gender + " and is " + vanus + " years old. ");
+  System.out.println("She is a " + occupation);
+  System.out.println("Has she finished university? " + finishedUniversity);
+  System.out.println("Is she married? " + Married + " and has " + howmanyKids + " kids.");
+  System.out.println("Her bank account number is " + BankaccountNumber + " and has " + accountBalance + " euros.");
+  System.out.println("She lost her job and spent 700 euros, her account balance is now " + (accountBalance - 700) + " euros. ");
+
+
+
+
+  }
+}
