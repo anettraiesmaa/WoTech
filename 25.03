@@ -1,0 +1,19 @@
+public class Main {
+  public static void main(String[] args) {
+
+    String username = "Daiga";
+      //true
+    if (username != "Elchin") {
+
+      System.out.println("You can come to party");//this code is runnning if it's true
+    } else {
+      System.out.println("Go home");
+    }
+
+  
+
+
+    System.out.println("This code is going to show always");
+
+  }
+}
