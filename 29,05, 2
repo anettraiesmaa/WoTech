@@ -1,0 +1,33 @@
+public class Main {
+    public static void main(String[] args) {
+
+        Person person = new Person("Oskars", "Klaumanis");
+
+        Person person2 = new Person();
+        person2.name = "Elchin";
+        person2.surname = "Datorium";
+
+
+        System.out.println(person.name);
+        System.out.println(person2.name);
+    }
+}
+
+public class Person {
+  
+  public String name;
+  public String surname;
+
+  // new Person("oskars", "klaumanis");
+  //this is a constructot
+  // Constructor always launches when you create a new object -> new Person(name, surname);
+  // You can provide values to constructor
+
+  public Person(String inputName, String inputSurname){
+    name = inputName;
+    surname = inputSurname;
+  }
+  public Person(){
+
+  }
+}
