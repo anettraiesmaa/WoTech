@@ -1,0 +1,69 @@
+public class Main {
+    public static void main(String[] args) {
+        
+        var car = new Car();
+        car.model = "BMW";
+        car.color = "Black";
+        car.isElecrical = false;
+        car.year = 2020;
+        car.cost = 13000;
+        car.euro = '€'; 
+
+        System.out.println(car.model);
+        System.out.println(car.color);
+        System.out.println(car.isElecrical);
+        System.out.println(car.year);
+        System.out.print(car.cost);
+        System.out.println(car.euro);
+
+        System.out.println("----------------------");
+
+        var car2 = new Car();
+        System.out.println(car2.model);
+        System.out.println(car2.color);
+        System.out.println(car2.isElecrical);
+        System.out.println(car2.year);
+        System.out.print(car2.cost);
+        System.out.println(car2.euro);
+
+        System.out.println("----------------------");
+
+        var car3 = new Car("Ford", "Red", false, 1996, 1500, '€');
+        System.out.println(car3.model);
+        System.out.println(car3.color);
+        System.out.println(car3.isElecrical);
+        System.out.println(car3.year);
+        System.out.print(car3.cost);
+        System.out.println(car3.euro);
+
+        System.out.println("----------------------");
+        System.out.println("Car count: " + Car.carCount);
+    }
+}
+public class Car{
+    public static int carCount = 0;
+    public String model;
+    public String color;
+    public boolean isElecrical;
+    public int year;
+    public int cost;
+    public char euro;
+
+    public Car(String model, String color, boolean isElecrical, int year, int cost, char euro){
+        this.model = model;
+        this.color = color;
+        this.isElecrical = isElecrical;
+        this.year = year;
+        this.cost = cost;
+        this.euro = euro;
+    }
+    public Car(){
+        this.model = "Nissan";
+        this.color = "White";
+        this.isElecrical = true;
+        this.year = 2022;
+        this.cost = 18000;
+        this.euro = '€';
+        carCount++;
+    }   
+}
