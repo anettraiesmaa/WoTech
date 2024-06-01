@@ -1,0 +1,9 @@
+public class Student{
+  public int sideLength;
+  //NEW Square(7);
+  public Square(int sideLength){
+    this.sideLength = sideLength;
+  }
+    
+     
+}
