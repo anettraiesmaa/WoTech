@@ -1,0 +1,220 @@
+import java.util.Scanner;
+
+public class Main {
+
+    public static Shop shop = new Shop();
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("Press 1 to create an item");
+            System.out.println("Press 2 to see items list");
+            System.out.println("Press 3 to add an item to cart");
+            System.out.println("Press 4 to remove an item from cart");
+            System.out.println("Press 5 to proceed to checkout");
+            System.out.println("Press any other key to exit");
+
+        while (true) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Press 1 to create an item");
+            System.out.println("Press 2 to show items list");
+            System.out.println("Press 3 to add an item to cart");
+            System.out.println("Press 4 to remove an item from cart");
+            System.out.println("Press 5 to proceed to checkout");
+            System.out.println("Press any other key to exit");
+
+            var userInput = scanner.nextLine();
+
+            if (userInput.equals("1")) {
+                createItem(scanner);
+            } else if (userInput.equals("2")) {
+                printItems();
+            } else if (userInput.equals("3")) {
+                addItemToCart(scanner);
+            } else if (userInput.equals("4")) {
+                removeItemFromCart(scanner);
+            } else if (userInput.equals("5")) {
+                checkout();
+            } else {
+                break;
+            }
+        }
+    }
+
+    public static void createItem(Scanner scanner) {
+        System.out.println("Please input the name of the product:");
+        String name = scanner.nextLine();
+
+        System.out.println("Please input the id of the product:");
+        int id = scanner.nextInt();
+
+        System.out.println("Please enter the cost of the product:");
+        int cost = scanner.nextInt();
+        scanner.nextLine(); 
+
+        Item item = new Item(id, name, cost);
+        shop.addItem(item);
+    }
+
+    public static void printItems() {
+        for (Item item : shop.getItems()) {
+            System.out.println("ID: " + item.getId() + ", Name: " + item.getName() + ", Cost: " + item.getCost());
+        }
+    }
+
+    public static void addItemToCart(Scanner scanner) {
+        System.out.println("Enter the ID of the item you want to add to the cart:");
+        int id = scanner.nextInt();
+        scanner.nextLine(); // Consume the remaining newline
+
+        Item item = shop.getItemById(id);
+        if (item != null) {
+            shop.addItemToCart(item);
+            System.out.println("Item added to cart.");
+        } else {
+            System.out.println("Item not found.");
+        }
+    }
+
+    public static void removeItemFromCart(Scanner scanner) {
+        System.out.println("Enter the ID of the item you want to remove from the cart:");
+        int id = scanner.nextInt();
+        scanner.nextLine(); // Consume the remaining newline
+
+        Item item = shop.getItemById(id);
+        if (item != null) {
+            shop.removeItemFromCart(item);
+            System.out.println("Item removed from cart.");
+        } else {
+            System.out.println("Item not found.");
+        }
+    }
+
+    public static void checkout() {
+        int total = shop.checkout();
+        System.out.println("Total cost: " + total);
+    }
+}
+
+
+
+public class Item{
+  private int id;
+  private String name;
+  private int cost;
+  
+  public Item(int id, String name, int cost) {
+    this.id = id;
+    this.name = name;
+    this.cost = cost;
+  }
+
+  public Item(int id){
+    this.id = id;
+  }
+
+  public int getId(){
+    return id;
+  }
+
+  public void setName(String name){
+    //Do some logic here
+
+    this.name = name;
+
+    //Do some logic here
+  }
+
+  public String getName(){
+    return name;
+  }
+
+  public void setCost(int cost){
+    // Check whether or not the user is a cashier, and if it is, then allow to change the cost.
+    this.cost = cost;
+  }
+
+  public int getCost(){
+    return cost;
+  }
+}
+
+
+
+
+//shop + ItemManager in one, usually not together
+//shop- add item to cart, remove item, get the current total price of total, chech weather or not an item is available
+//itemmanager- a list of items, add items/remove items, update items, checout(get all the item in the cart and show the total price)
+import java.util.ArrayList;
+
+public class Shop{
+  //ItemManager functionalitys:
+  //AddItem
+  //RemoveItem
+  //UpdateItem
+  private ArrayList<Item> items = new ArrayList<Item>();
+  private ArrayList<Item> cart = new ArrayList<Item>();
+
+  public ArrayList<Item> getItems() {
+    return items;
+  }
+  
+  public void addItem(Item item){
+    //add item to the list 
+    items.add(item);
+  }
+  public Item getItemById(int id) {
+      for (Item item : items) {
+          if (item.getId() == id) {
+              return item;
+          }
+      }
+      return null;
+  }
+  public void removeItemFromCart(Item item) {
+      cart.remove(item);
+  }
+
+  public void removeItem(int id){
+    //items.remove(item){removeItem(Item item)};
+    for (var item : items){
+      if(item.getId() == id){
+        items.remove(item);
+        return;
+      }
+    }
+  }
+  public void updateItem(int id, String name, int cost){
+    //find the item with the id
+    //update the item with name and cost
+    for (var item : items){
+      if(item.getId() == id){
+        item.setName(name);
+        item.setCost(cost);
+        return;
+      }
+    }
+  }
+  //shop functionalitys:
+  //AddItemToCart
+  //RemoveItemFromCart
+  //get the item list
+  //ChecOut (GetTheTotalPrice)
+
+  
+  
+
+  public void addItemToCart(Item item){
+    //in real life items list, it would contain the amount of available item and before we add item to the cart, we check if the item is available
+    cart.add(item);
+  }
+  public int checkout(){
+    //get the total cost of the cart
+    int sum = 0;
+    for(var item : cart){
+      sum += item.getCost();
+    }
+    return sum;
+  }
+}
