@@ -1,0 +1,310 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+public class Main {
+    private static Scanner scanner = new Scanner(System.in);
+    private static CheeseService cheeseService = new CheeseService();
+    private static CheeseShop shop = new CheeseShop();
+    private static ArrayList<Customer> customers = new ArrayList<>();
+    
+    public static void main(String[] args) {
+
+        Item item1 = new Item(123, "Cheddar", 5);
+        Item item2 = new Item(124, "Swiss", 7);
+        Item item3 = new Item(125, "Gouda", 9);
+        Item item4 = new Item(126, "Brie", 11);
+
+        cheeseService.addItem(item1);
+        cheeseService.addItem(item2);
+        cheeseService.addItem(item3);
+        cheeseService.addItem(item4);
+        
+        while(true){
+            System.out.println("Welcome to Cheese Shop");
+            System.out.println("Enter 1 if you are Shop Owner");
+            System.out.println("Enter 2 if you are Customer");
+            System.out.println("Enter 3 if you want to exit Cheese Shop");
+            int userInput = scanner.nextInt();
+            scanner.nextLine();
+            if(userInput == 1){
+                adminMenu();
+            } else if (userInput == 2){
+                customerMenu();
+            } else {
+                System.out.println("Thank you for visiting Cheese Shop");
+                break;
+            }
+        }
+    }
+    public static void addItem(){
+      System.out.println("Provide an item ID: ");
+      int id = scanner.nextInt();
+      scanner.nextLine();
+      System.out.println("Provide an item name: ");
+      String name = scanner.nextLine();
+      System.out.println("Provide an item cost: ");
+      int price = scanner.nextInt();
+      scanner.nextLine();
+      Item item = new Item(id, name, price);
+      cheeseService.addItem(item);
+    }
+    public static void printItems() {
+          System.out.println("These are the items in the store: ");
+          ArrayList<Item> items = cheeseService.getItems();
+          for (Item item : items) {
+            System.out.println("ID: " + item.getId() + " ; name: " + item.getName() + " ; cost: "+ item.getPrice());
+          }
+        }
+    
+    public static void removeItem() {
+      System.out.println("Provide an item ID: ");
+      int id = scanner.nextInt();
+      scanner.nextLine();
+      cheeseService.removeItem(id);
+    }
+
+        
+    public static void updateItem(){
+          System.out.println("Provide an item ID: ");
+          int id = scanner.nextInt();
+          scanner.nextLine();
+          System.out.println("Please enter updated item name: ");
+          String name = scanner.nextLine();
+          System.out.println("Please enter updated item cost: ");
+          int price = scanner.nextInt();
+          scanner.nextLine();
+          cheeseService.updateItem(id, name, price);
+          System.out.println("Item updated");
+        }
+    public static void addItemToCart() {
+      System.out.println("Search the item by name: ");
+      String name = scanner.nextLine();
+      ArrayList<Item> items = cheeseService.getItems();
+      for (Item item : items){
+        if (item.getName().equalsIgnoreCase(name)) {
+          shop.addItemToCart(item);
+        }
+      }
+    }
+    
+    public static void printCart() {
+      System.out.println("These are the items in the cart: ");
+      ArrayList<Item> cart = shop.getCart();
+      for (Item item : cart) {
+        System.out.println("ID: " + item.getId() + " ; name: " + item.getName() + " ; cost: "+ item.getPrice());
+      }
+    }
+    public static void removeItemFromCart() {
+      System.out.println("Search the item by name to remove from the cart: ");
+      String name = scanner.nextLine();
+      ArrayList<Item> cart = shop.getCart();
+      for (Item item : cart){
+        if (item.getName().equalsIgnoreCase(name)){
+          shop.removeItemFromCart(name);
+          System.out.println(item.getName() + " removed from cart");
+          return;
+        }
+      }
+    }
+    public static int checkout(){
+      return shop.checkout();
+    }
+    public static void adminMenu() {
+          while (true) {
+            System.out.println("Welcome to Shop Manager!");
+            System.out.println("Enter 1 to add an item to the inventory");
+            System.out.println("Enter 2 to print the list of items");
+            System.out.println("Enter 3 to remove an item from the inventory");
+            System.out.println("Enter 4 to update an item in the inventory");
+            System.out.println("Enter 5 to exit");
+            int userInput = scanner.nextInt();
+            scanner.nextLine();
+            if (userInput == 1) {
+              addItem();
+            } else if (userInput == 2) {
+              printItems();
+            } else if (userInput == 3) {
+              removeItem();
+            } else if (userInput == 4) {
+              updateItem();
+            } else {
+              System.out.println("You chose to exit the Shop Manager menu");
+              break;
+            }         
+          }
+        }
+    public static void customerMenu() {
+        System.out.println("Welcome to the Shop!");
+        System.out.println("Enter 1 to log in");
+        System.out.println("Enter 2 to register");
+        System.out.println("Enter 3 to exit");
+        int userInput = scanner.nextInt();
+        scanner.nextLine();
+        if (userInput == 1) {
+            customerLogin();
+        } else if (userInput == 2) {
+            customerRegister();
+        } else {
+            System.out.println("Exiting customer menu");
+        }
+    }
+    public static void customerLogin() {
+        System.out.println("Enter your name: ");
+        String name = scanner.nextLine();
+        for (Customer customer : customers) {
+            if (customer.getCustomerName().equalsIgnoreCase(name)) {
+                customerActions(customer);
+                return;
+            }
+        }
+        System.out.println("Customer not found. Please register.");
+    }
+    public static void customerRegister() {
+        System.out.println("Enter your name: ");
+        String name = scanner.nextLine();
+        System.out.println("Enter your initial wallet balance: ");
+        int wallet = scanner.nextInt();
+        scanner.nextLine();
+        Customer customer = new Customer(name, wallet);
+        customers.add(customer);
+        System.out.println("Registration successful!");
+        customerActions(customer);
+    }
+
+
+    public static void customerActions(Customer customer) {
+          while (true) {
+            System.out.println("Welcome " + customer.getCustomerName() + "to the Shop!");
+            System.out.println("Enter 1 to add an item to your cart");
+            System.out.println("Enter 2 to view items in the cart");
+            System.out.println("Enter 3 to remove an item from the cart");
+            System.out.println("Enter 4 to checkout");
+            System.out.println("Enter 5 to exit");
+            int userInput = scanner.nextInt();
+            scanner.nextLine();
+            if (userInput == 1) {
+                addItemToCart();
+            } else if (userInput == 2) {
+                printCart();
+            } else if (userInput == 3) {
+                removeItemFromCart();
+            } else if (userInput == 4) {
+                System.out.println("Your total is: " + checkout());
+                if (customer.getWallet() >= checkout()) {
+                    customer.setWallet(customer.getWallet() - checkout());
+                    System.out.println("Purchase successful! Remaining balance: " + customer.getWallet());
+                } else {
+                    System.out.println("Insufficient balance you need " + (checkout() - customer.getWallet()) + " more.");
+                }
+            } else {
+                System.out.println("You chose to exit the shop");
+                break;
+            }         
+          }
+        }
+    }
+public class Item{
+  private String name;
+  private int price;
+  private int id;
+
+  public Item(int id, String name, int price){
+    this.id = id;
+    this.name = name;
+    this.price = price;
+  }
+  public int getId(){
+    return id;
+  }
+  public void setName(String name){
+    this.name = name;
+  }
+  public String getName(){
+    return name;
+  }
+  public void setPrice(int price){
+    this.price = price;
+  }
+  public int getPrice(){
+    return price;
+  }
+}
+
+import java.util.ArrayList;
+public class CheeseShop{
+  private ArrayList<Item> cart = new ArrayList<Item>();
+  public void addItemToCart(Item item){
+    cart.add(item);
+  }
+  public int checkout() { 
+    int sum = 0;
+    for (var item : cart) {
+      sum += item.getPrice();
+    }
+    return sum;
+  }
+  public void removeItemFromCart(String name){
+    for (var item : cart) {
+      if (item.getName().equalsIgnoreCase(name)){
+        cart.remove(item);
+        return;
+      }
+    }
+  }
+  public ArrayList<Item> getCart() {
+      return cart;
+  }
+}
+
+import java.util.ArrayList;
+public class CheeseService{
+  private ArrayList<Item> items = new ArrayList<Item>();
+  public ArrayList<Item> getItems(){
+    return items;
+  }
+  public void addItem(Item item) {
+    items.add(item);
+  }
+  public void removeItem(int id) {
+    for (var item : items) {
+      if (item.getId() == id) {
+        items.remove(item);
+        return;
+      }
+    }
+  }
+  public void updateItem(int id, String name, int price) {
+    for (var item : items) {
+      if (item.getId() == id) {
+        item.setName(name);
+        item.setPrice(price);
+        return;
+      }
+    }
+  }
+}
+
+import java.util.ArrayList;
+public class Customer{
+  private String customerName;
+  private int wallet;
+  private ArrayList<Item> ownedItems;
+
+  public Customer(String customerName, int wallet){
+    this.customerName = customerName;
+    this.wallet = wallet;
+    this.ownedItems = new ArrayList<Item>();
+  }
+  public String getCustomerName(){
+    return customerName;
+  }
+  public int getWallet(){
+    return wallet;
+  }
+  public void setWallet(int wallet) {
+      this.wallet = wallet;
+  }
+  public ArrayList<Item> getOwnedItems(){
+    return ownedItems;
+  }
+  
+}
