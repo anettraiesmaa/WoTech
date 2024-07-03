@@ -1,0 +1,65 @@
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args){
+        ArrayList<Item> items = new ArrayList<Item>();
+        
+        var cat = new Cat();
+        items.add(cat);
+        cat.name = "Miisu";
+        cat.age = 2;
+        cat.catSound = "Meow";
+        cat.catColor = "Black";
+
+        var dog = new Dog();
+        items.add(dog);
+        dog.name = "Fido";
+        dog.age = 3;
+        dog.dogSound = "Woof";
+        dog.dogColor = "Brown";
+
+        System.out.println("These are my pets:");
+        for (var item : items){
+            System.out.println("Pet name: " + item.name);
+            System.out.println("Pet age: " + item.age);
+            if(item instanceof Cat){
+                Cat catInstance = (Cat) item;
+                System.out.println("Pet sound: " + catInstance.catSound);
+                System.out.println("Pet color: " + catInstance.catColor);
+            } else if (item instanceof Dog){
+                Dog dogInstance = (Dog)item;
+                System.out.println("Pet sound: " + dogInstance.dogSound);
+                System.out.println("Pet color: " + dogInstance.dogColor);
+            }
+        }        
+    }
+}
+
+public class Item{
+  public String name;
+  public int age;
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public int getAge() {
+    return age;
+  }
+  public void setAge(int age) {
+    this.age = age;
+
+  
+  }
+}
+
+public class Cat extends Item{
+  public String catSound;
+  public String catColor;
+}
+public class Dog extends Item{
+  public String dogSound;
+  public String dogColor; 
+}
