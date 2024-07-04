@@ -1,0 +1,82 @@
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        var list = new ArrayList<PaymentService>();
+
+        var sebPaymentService1 = new SebPaymentService();
+        list.add(sebPaymentService1);
+        sebPaymentService1.currency = "$";
+        sebPaymentService1.money = 100;
+        sebPaymentService1.description = "Loan payment";
+        sebPaymentService1.clientAddress = ("EE3373738383");
+
+        var swedPaymentService1 = new SwedPaymentService();
+        list.add(swedPaymentService1);
+        swedPaymentService1.currency = "EUR";
+        swedPaymentService1.money = 1000;
+        swedPaymentService1.description = "Lease payment";
+        swedPaymentService1.clientAddress = ("EE7448494005");
+
+        var swedPaymentService2 = new SwedPaymentService();
+        list.add(swedPaymentService2);
+        swedPaymentService2.currency = "SEK";
+        swedPaymentService2.money = 50;
+        swedPaymentService2.description = "Car lease payment";
+        swedPaymentService2.clientAddress = ("EE7484949");
+
+        for (var paymentService : list) {
+            System.out.print(paymentService.money);
+            System.out.println(paymentService.currency);
+            System.out.println(paymentService.description);
+            System.out.println(paymentService.clientAddress);
+            paymentService.sendPayment();
+            paymentService.printInfo();
+            System.out.println();
+        }      
+    }
+}
+
+
+public class PaymentService{
+  public String clientAddress;
+  public int money;
+  public String description;
+  public String currency;
+  
+  public void sendPayment() {
+    System.out.println("This is a payment to some Service");
+  }
+
+  public void printInfo(){
+    System.out.println("INFO");
+  }
+}
+
+
+
+public class SebPaymentService extends PaymentService {
+  @Override
+  public void sendPayment(){
+    System.out.println("This is a payment to SEB service");
+    
+  }
+  @Override
+    public void printInfo(){
+      System.out.println("This is SEB info");
+    }
+}
+
+
+
+public class SwedPaymentService extends PaymentService {
+  @Override
+  public void sendPayment(){
+    System.out.println("This is a payment to Swed service");
+
+  }
+  @Override
+    public void printInfo(){
+      System.out.println("This is Swed info");
+    }
+}
