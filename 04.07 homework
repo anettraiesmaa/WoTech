@@ -1,0 +1,92 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+public class Main {
+    private static Scanner scanner = new Scanner(System.in);
+    public static void main(String[] args) {
+        var list = new ArrayList<Food>();
+        
+        var burger1 = new Burger();
+        list.add(burger1);
+        burger1.name = "Chicken Burger";
+        burger1.cost = 5;
+
+        var pizza1 = new Pizza();
+        list.add(pizza1);
+        pizza1.name = "Pepperoni Pizza";
+        pizza1.cost = 10;
+
+        while(true){
+            System.out.println("Welcome to the Restorant");
+            System.out.println("Enter 1 if you want to eat a burger");
+            System.out.println("Enter 2 if you want to eat a pizza");
+            int userInput = scanner.nextInt();
+            scanner.nextLine();
+            if (userInput == 3) {
+                            System.out.println("Exiting the restaurant. Thank you!");
+                            break;
+                        }
+
+                        for (var food : list) {
+                            if (userInput == 1 && food instanceof Burger) {
+                                food.eatFood();
+                                food.printInfo();
+                            } else if (userInput == 2 && food instanceof Pizza) {
+                                food.eatFood();
+                                food.printInfo();
+                            }
+                        }
+                    }
+                }
+            }
+
+
+
+public class Food{
+  public String name;
+  public int cost;
+  
+  public void eatFood() {
+    System.out.println("This is a food");
+  }
+
+  public void printInfo(){
+    System.out.println("INFO");
+  }
+}
+
+
+
+public class Burger extends Food {
+  @Override
+  public void eatFood(){
+    System.out.println("You have eaten a burger");
+    
+  }
+  @Override
+    public void printInfo(){
+      System.out.println("This is a tasty burger");
+    }
+}
+
+
+
+public class Pizza extends Food {
+  @Override
+  public void eatFood(){
+    System.out.println("You have eaten a pizza");
+
+  }
+  @Override
+    public void printInfo(){
+      System.out.println("This is a tasty pizza");
+    }
+}
+                
+            
+
+
+
+
+
+
+
