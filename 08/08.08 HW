@@ -1,0 +1,58 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
+
+package com.datorium.Datorium.API.Controllers;
+
+import com.datorium.Datorium.API.DTO.Message;
+import com.datorium.Datorium.API.Services.MessageService;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+public class MessageController {
+    private final MessageService messageService = new MessageService();
+
+    public MessageController() {
+    }
+
+    @PostMapping({"/reply"})
+    public int reply(@RequestBody Message message) {
+        return this.messageService.add(message);
+    }
+}
+
+
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
+
+package com.datorium.Datorium.API.DTO;
+
+public class Message {
+    public String messageTwo;
+
+    public Message() {
+    }
+}
+
+
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
+
+package com.datorium.Datorium.API.Services;
+
+import com.datorium.Datorium.API.DTO.Message;
+
+public class MessageService {
+    public MessageService() {
+    }
+
+    public int add(Message message) {
+        return 0;
+    }
+}
+
