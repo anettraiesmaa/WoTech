@@ -1,0 +1,5 @@
+SELECT Procedures.ProcedureType, SUM(Procedures.Price) AS TotalSales
+FROM Sales
+JOIN Procedures 
+ON Sales.ProcedureCode = Procedures.ProcedureCode
+GROUP BY Procedures.ProcedureType;
