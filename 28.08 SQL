@@ -1,0 +1,7 @@
+DROP table persons --deleted already exictes table
+
+CREATE table persons
+
+(id INTEGER PRIMARY KEY, NAME varchar); --varchar- string, just text --primary key=ensuring 
+--no two rows can have the same value in this column.
+--automatically fills the DB with the new ID for a new row 
