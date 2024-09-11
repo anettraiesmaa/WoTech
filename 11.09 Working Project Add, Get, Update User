@@ -1,0 +1,157 @@
+package com.datorium.Datorium.API.Controllers;
+
+
+import com.datorium.Datorium.API.DTOs.User;
+import com.datorium.Datorium.API.Services.UserService;
+import org.apache.coyote.BadRequestException;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+
+@RestController
+@RequestMapping("/user")
+public class UserController {
+    private UserService userService;
+    public UserController(){
+        userService = new UserService();
+    }
+    //CRUD
+    //AddUser
+    //UpdateUser
+    //GetUser
+    //DeleteUser
+
+    //@GetMapping
+    @PostMapping("/add") //localhost:8080/user/add
+    public void add(@RequestBody User user) throws BadRequestException {
+        userService.add(user);
+    }
+
+    @GetMapping("/get")
+    public ArrayList<User> get(){
+        return userService.get();
+    }
+
+    @PostMapping("/update")
+    public User update(@RequestBody User user){
+        return userService.update(user);
+    }
+}
+
+
+
+package com.datorium.Datorium.API.DTOs;
+
+public class User {
+    public int id;
+    public String name;
+}
+
+
+
+
+package com.datorium.Datorium.API.Repo;
+
+import com.datorium.Datorium.API.DTOs.User;
+
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+public class UserRepo {
+
+    private ArrayList<User> users = new ArrayList<>();//Mocked db
+
+    public void add(User user){
+        String url = "jdbc:sqlite:my.db";
+        try (var conn = DriverManager.getConnection(url)) {
+            if (conn != null) {
+                var statement = conn.createStatement();
+                statement.execute("INSERT INTO people (name) VALUES ('" + user.name + "')");
+                //INSERT INTO people (name) VALUES ('');DROP TABLE people;--')
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
+    public ArrayList<User> get(){
+        String url = "jdbc:sqlite:my.db";
+        var resultList = new ArrayList<User>();
+        try (var conn = DriverManager.getConnection(url)) {
+            if (conn != null) {
+                var statement = conn.createStatement();//create action what to do
+                var result = statement.executeQuery("SELECT id, name FROM people");//action
+                //result is different box, but more abstract
+                //INSERT INTO people (name) VALUES ('');DROP TABLE people;--')
+
+                while(result.next()){ //going through abstract boxes
+                    var user = new User();
+                    user.id = result.getInt("id");
+                    user.name = result.getString("name");
+                    resultList.add(user);
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+
+        return resultList;
+    }
+
+    public void update( User user){
+        String url = "jdbc:sqlite:my.db";
+        try (var conn = DriverManager.getConnection(url)) {
+            if (conn != null) {
+                var statement = conn.createStatement();
+                statement.execute("UPDATE people SET name = '"
+                        + user.name + "' WHERE id = " + user.id);
+                //INSERT INTO people (name) VALUES ('');DROP TABLE people;--')
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+}
+//UpdateUserDTO contains userId
+//User contains only Name
+//Our mission is to add the userId to the User class
+// 1. Add int Id to the User class
+// 2. Replace UpdateUserDTO usage by just User class
+// 3. Delete UpdateUserDTO
+// 4. Remove the unnecessary ids that came from UpdateUserDTO
+// 5. Update the Get method with Id
+
+
+package com.datorium.Datorium.API.Services;
+
+import com.datorium.Datorium.API.DTOs.User;
+import com.datorium.Datorium.API.Repo.UserRepo;
+import org.apache.coyote.BadRequestException;
+
+import java.util.ArrayList;
+
+public class UserService {
+    private UserRepo userRepo;
+
+    public UserService(){
+        userRepo = new UserRepo();
+    }
+
+    public void add(User user) throws BadRequestException {
+
+        if(user.name == null || user.name.isEmpty()) {
+            throw new BadRequestException("Name is empty");
+        }
+        userRepo.add(user);
+    }
+
+    public ArrayList<User> get(){
+        return userRepo.get();
+    }
+
+    public User update(User user){
+        userRepo.update(user);
+        return user; //todo: this is a hack, fix later
+    }
+}
