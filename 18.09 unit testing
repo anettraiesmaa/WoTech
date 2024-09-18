@@ -1,0 +1,58 @@
+https://start.spring.io/    here i can open new project with spring boot
+
+package com.datorium.Datorium.API;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RestController;
+
+@SpringBootApplication
+@RestController
+@CrossOrigin
+public class DatoriumApiApplication {
+
+	public static void main(String[] args) {
+		var userService = new UserService();
+
+		System.out.println(userService.getFullName("Oskars", "Klaumanis"));
+		SpringApplication.run(DatoriumApiApplication.class, args);
+
+	}
+
+}
+
+
+
+
+package com.datorium.Datorium.API;
+
+public class UserService {
+
+    public String randomDate = "1234567";
+    public String getFullName(String name, String surename){
+        return name + " " + surename;
+    }
+}
+
+package com.datorium.Datorium.API;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.util.Assert;
+
+@SpringBootTest
+class DatoriumApiApplicationTests {
+	// Hey, I need a method, that gives me my fullname
+	@Test
+	void WHEN_NameIsOskarsAndSurnameIsKlaumanis_THEN_Result_Oskars_Klaumanis() {
+		//Arrange -> prepare data and services
+		var userService = new UserService();
+
+		//Act -> Do some action, usually call a method
+		var fullname = userService.getFullName("Oskars", "Klaumanis");
+
+		//Assert----> test weather or not the result is correct
+		Assert.isTrue(fullname.equals("Oskars Klaumanis"), "Hey, the name should be with a space inbetween and should contain both name and surname");
+	}
+}
